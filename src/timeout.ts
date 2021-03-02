@@ -36,7 +36,7 @@ export default async function <Type>(
   if (timeout < MINIMUM_TIMEOUT || timeout > MAXIMUM_TIMEOUT) {
     // Node's built-in setTimeout will default the delay to 1ms if the delay is larger than 2147483647ms or less than 1ms.
     // Instead, we error if the argument is invalid.
-    throw RangeError(`The argument must be >= ${MINIMUM_TIMEOUT} and <= ${MAXIMUM_TIMEOUT}`);
+    throw RangeError(`The timeout must be >= ${MINIMUM_TIMEOUT} and <= ${MAXIMUM_TIMEOUT}`);
   }
 
   let handle: NodeJS.Timeout | undefined;

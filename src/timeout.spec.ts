@@ -79,7 +79,7 @@ describe('timeout', () => {
   });
 
   it('throws RangeError on invalid timeout values', async () => {
-    const expectedRangeError = /^RangeError: The argument must be >= 1 and <= 900000$/u;
+    const expectedRangeError = /^RangeError: The timeout must be >= 1 and <= 900000$/u;
     await assert.rejects(() => timeout(Promise.resolve(), { timeout: -1 }), expectedRangeError);
     await assert.rejects(() => timeout(Promise.resolve(), { timeout: 0 }), expectedRangeError);
     await assert.rejects(() => timeout(Promise.resolve(), { timeout: 900001 }), expectedRangeError);
