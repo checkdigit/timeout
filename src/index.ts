@@ -1,3 +1,4 @@
 // index.ts
 
-export { exampleFunction } from './example-directory';
+export { default } from './timeout';
+export * from './timeout';
