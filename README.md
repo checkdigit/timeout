@@ -1,6 +1,6 @@
 # checkdigit/timeout
 
-The `@checkdigit/timeout` module implements the recommended Check Digit timeout algorithm.
+The `@checkdigit/timeout` module implements the recommended Check Digit timeout algorithm for promises.
 
 ### Installing
 
@@ -18,3 +18,7 @@ await timeout(new Promise(....));
 await timeout(new Promise(....), { timeout: 10000 });
 
 ```
+
+## License
+
+MIT

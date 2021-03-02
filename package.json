@@ -37,6 +37,7 @@
     "preset": "ts-jest",
     "testPathIgnorePatterns": [
       "<rootDir>/build/",
+      "<rootDir>/coverage",
       "<rootDir>/node_modules/"
     ]
   },
@@ -49,6 +50,6 @@
     "lint:fix": "eslint -f unix 'src/**/*.ts' --fix",
     "prettier": "prettier --list-different 'src/**/*.ts'",
     "prettier:fix": "prettier --write 'src/**/*.ts'",
-    "test": "jest && npm run lint && npm run prettier"
+    "test": "tsc && jest && npm run lint && npm run prettier"
   }
 }
