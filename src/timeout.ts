@@ -42,14 +42,7 @@ export default async function <Type>(
   let handle: NodeJS.Timeout | undefined;
   try {
     return (await Promise.race([
-      (async () => {
-        const result = await promise;
-        if (handle !== undefined) {
-          clearTimeout(handle);
-          handle = undefined;
-        }
-        return result;
-      })(),
+      promise,
       new Promise((_, reject) => {
         handle = setTimeout(() => {
           reject(new TimeoutError(timeout));
@@ -58,7 +51,6 @@ export default async function <Type>(
     ])) as Type;
   } finally {
     if (handle !== undefined) {
-      // noinspection JSUnusedAssignment
       clearTimeout(handle);
       handle = undefined;
     }
