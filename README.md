@@ -1,36 +1,24 @@
-# Check Digit < Insert name > Library
+# checkdigit/timeout
 
-The Check Digit < Insert Name >  library is a library for Check Digit services to deal with [ short description about what the library does]
-  
-  Features:
-* Feature 1
-* Feature 2
-* Feature3
-* (...)
-
-
+The `@checkdigit/timeout` module implements the recommended Check Digit timeout algorithm for promises.
 
 ### Installing
 
-`npm install @checkdigit/< Insert name >` 
+`npm install @checkdigit/timeout` 
 
 ### Use
-It could be. i.e.
-```
-import * as insertName from '@checkdigit/< Insert name >';
-
-const someVariable = insertName();
 
 ```
+import timeout from '@checkdigit/timeout';
 
-Or if it can be called as a script. i.e.
+// await a promise, with the default 60 second timeout
+await timeout(new Promise(....));
+
+// await a promise, but with a 10 second timeout
+await timeout(new Promise(....), { timeout: 10000 });
+
 ```
-insert-name -b src/package.json
-```
 
+## License
 
-### Links
-
-* Company website: [your.website.url]
-* Npm: [npm.url]
-    
+MIT
