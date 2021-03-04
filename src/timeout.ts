@@ -39,20 +39,18 @@ export default async function <Type>(
     throw RangeError(`The timeout must be >= ${MINIMUM_TIMEOUT} and <= ${MAXIMUM_TIMEOUT}`);
   }
 
-  let handle: NodeJS.Timeout | undefined;
+  let handle: number | undefined;
   try {
     return (await Promise.race([
       promise,
       new Promise((_, reject) => {
-        handle = setTimeout(() => {
+        // this setTimeout is currently mis-typed (sometimes...) as NodeJS.Timeout, when in fact it returns a number.
+        handle = (setTimeout(() => {
           reject(new TimeoutError(timeout));
-        }, timeout);
+        }, timeout) as unknown) as number;
       }),
     ])) as Type;
   } finally {
-    if (handle !== undefined) {
-      clearTimeout(handle);
-      handle = undefined;
-    }
+    clearTimeout(handle);
   }
 }

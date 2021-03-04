@@ -62,18 +62,19 @@ describe('timeout', () => {
     );
     assert.strictEqual(reached, false);
 
+    let reachedError = false;
     let returnedError;
     try {
       await timeout(
         new Promise(() => {
-          setTimeout(() => (reached = true), 10);
+          setTimeout(() => (reachedError = true), 10);
         }),
         { timeout: 3 }
       );
     } catch (error: unknown) {
       returnedError = error;
     }
-    assert.strictEqual(reached, false);
+    assert.strictEqual(reachedError, false);
     assert.ok(returnedError instanceof TimeoutError);
     assert.strictEqual(returnedError.timeout, 3);
   });
