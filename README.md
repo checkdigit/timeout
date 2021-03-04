@@ -1,4 +1,4 @@
-# checkdigit/timeout
+# `@checkdigit/timeout`
 
 The `@checkdigit/timeout` module implements the recommended Check Digit timeout algorithm for promises.
 
