@@ -1,14 +1,13 @@
 // timeout.ts
 
 /*
- * Copyright (c) 2021-2022 Check Digit, LLC
+ * Copyright (c) 2021-2023 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-export interface TimeoutOptions {
-  timeout?: number;
-}
+import { TimeoutError } from './error';
+import type { TimeoutOptions } from './options';
 
 const MINIMUM_TIMEOUT = 1; // 1ms
 const MAXIMUM_TIMEOUT = 900_000; // 15 minutes
@@ -16,12 +15,6 @@ const MAXIMUM_TIMEOUT = 900_000; // 15 minutes
 const DEFAULT_OPTIONS: Required<TimeoutOptions> = {
   timeout: 60_000, // 1 minute
 };
-
-export class TimeoutError extends Error {
-  constructor(public timeout: number) {
-    super(`Timeout after ${timeout}ms`);
-  }
-}
 
 /**
  * Promise with timeout implementation.  If promise takes longer than timeout milliseconds to resolve, reject with

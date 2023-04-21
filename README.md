@@ -4,7 +4,7 @@ The `@checkdigit/timeout` module implements the recommended Check Digit timeout 
 
 ### Installing
 
-`npm install @checkdigit/timeout` 
+`npm install @checkdigit/timeout`
 
 ### Use
 
