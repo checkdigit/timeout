@@ -24,7 +24,7 @@ const DEFAULT_OPTIONS: Required<TimeoutOptions> = {
  */
 export default async function <Type>(
   promise: Promise<Type>,
-  { timeout = DEFAULT_OPTIONS.timeout }: TimeoutOptions = DEFAULT_OPTIONS
+  { timeout = DEFAULT_OPTIONS.timeout }: TimeoutOptions = DEFAULT_OPTIONS,
 ): Promise<Type> {
   if (timeout < MINIMUM_TIMEOUT || timeout > MAXIMUM_TIMEOUT) {
     // Node's built-in setTimeout will default the delay to 1ms if the delay is larger than 2147483647ms or less than 1ms.
