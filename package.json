@@ -2,8 +2,6 @@
   "name": "@checkdigit/timeout",
   "version": "3.0.0",
   "description": "Implementation of the Check Digit timeout algorithm for promises",
-  "typings": "./dist/index.d.ts",
-  "main": "./dist/index.js",
   "type": "module",
   "exports": {
     ".": {
