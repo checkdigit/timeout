@@ -17,9 +17,9 @@ describe('timeout', () => {
         new Promise((resolve) => {
           setTimeout(() => resolve('abc'), 1);
         }),
-        { timeout: 5 }
+        { timeout: 5 },
       ),
-      'abc'
+      'abc',
     );
   });
 
@@ -30,9 +30,9 @@ describe('timeout', () => {
           new Promise((_, reject) => {
             reject(new Error('Rejected'));
           }),
-          { timeout: 5 }
+          { timeout: 5 },
         ),
-      /^Error: Rejected$/u
+      /^Error: Rejected$/u,
     );
   });
 
@@ -42,9 +42,9 @@ describe('timeout', () => {
         new Promise((resolve) => {
           resolve('abc');
         }),
-        { timeout: 5 }
+        { timeout: 5 },
       ),
-      'abc'
+      'abc',
     );
   });
 
@@ -56,9 +56,9 @@ describe('timeout', () => {
           new Promise(() => {
             setTimeout(() => (reached = true), 10);
           }),
-          { timeout: 2 }
+          { timeout: 2 },
         ),
-      /^Error: Timeout after 2ms$/u
+      /^Error: Timeout after 2ms$/u,
     );
     assert.equal(reached, false);
 
@@ -69,7 +69,7 @@ describe('timeout', () => {
         new Promise(() => {
           setTimeout(() => (reachedError = true), 10);
         }),
-        { timeout: 3 }
+        { timeout: 3 },
       );
     } catch (error: unknown) {
       returnedError = error;
@@ -100,9 +100,9 @@ describe('timeout', () => {
         timeout(
           new Promise((resolve) => {
             setImmediate(() => resolve(index));
-          })
-        )
-      )
+          }),
+        ),
+      ),
     ); // ?.
     assert.deepEqual(results.sort(), range);
   });
