@@ -1,8 +1,7 @@
 {
   "name": "@checkdigit/timeout",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Implementation of the Check Digit timeout algorithm for promises",
-  "type": "module",
   "sideEffects": false,
   "exports": {
     ".": {
