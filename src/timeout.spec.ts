@@ -6,7 +6,9 @@
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-import assert from 'node:assert';
+import { strict as assert } from 'node:assert';
+
+import { describe, it } from '@jest/globals';
 
 import timeout, { TimeoutError } from './index';
 
@@ -32,7 +34,7 @@ describe('timeout', () => {
           }),
           { timeout: 5 },
         ),
-      /^Error: Rejected$/u,
+      { message: 'Rejected' },
     );
   });
 
@@ -58,7 +60,7 @@ describe('timeout', () => {
           }),
           { timeout: 2 },
         ),
-      /^Error: Timeout after 2ms$/u,
+      { message: 'Timeout after 2ms' },
     );
     assert.equal(reached, false);
 
@@ -80,7 +82,7 @@ describe('timeout', () => {
   });
 
   it('throws RangeError on invalid timeout values', async () => {
-    const expectedRangeError = /^RangeError: The timeout must be >= 1 and <= 900000$/u;
+    const expectedRangeError = { name: 'RangeError', message: 'The timeout must be >= 1 and <= 900000' };
     await assert.rejects(() => timeout(Promise.resolve(), { timeout: -1 }), expectedRangeError);
     await assert.rejects(() => timeout(Promise.resolve(), { timeout: 0 }), expectedRangeError);
     await assert.rejects(() => timeout(Promise.resolve(), { timeout: 900_001 }), expectedRangeError);
@@ -103,7 +105,7 @@ describe('timeout', () => {
           }),
         ),
       ),
-    ); // ?.
+    );
     assert.deepEqual(results.sort(), range);
   });
 });
