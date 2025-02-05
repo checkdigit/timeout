@@ -1,13 +1,13 @@
 // timeout.ts
 
 /*
- * Copyright (c) 2021-2024 Check Digit, LLC
+ * Copyright (c) 2021-2025 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-import { TimeoutError } from './error';
-import type { TimeoutOptions } from './options';
+import { TimeoutError } from './error.ts';
+import type { TimeoutOptions } from './options.ts';
 
 const MINIMUM_TIMEOUT = 1; // 1ms
 const MAXIMUM_TIMEOUT = 900_000; // 15 minutes
@@ -27,7 +27,8 @@ export default async function <Type>(
   { timeout = DEFAULT_OPTIONS.timeout }: TimeoutOptions = DEFAULT_OPTIONS,
 ): Promise<Type> {
   if (timeout < MINIMUM_TIMEOUT || timeout > MAXIMUM_TIMEOUT) {
-    // Node's built-in setTimeout will default the delay to 1ms if the delay is larger than 2147483647ms or less than 1ms.
+    // Node's built-in setTimeout will default the delay to 1 ms
+    // if the delay is larger than 2,147,483,647 ms or less than 1 ms.
     // Instead, we error if the argument is invalid.
     throw new RangeError(`The timeout must be >= ${MINIMUM_TIMEOUT} and <= ${MAXIMUM_TIMEOUT}`);
   }
