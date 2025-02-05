@@ -7,10 +7,9 @@
  */
 
 import { strict as assert } from 'node:assert';
+import { describe, it } from 'node:test';
 
-import { describe, it } from '@jest/globals';
-
-import timeout, { TimeoutError } from './index';
+import timeout, { TimeoutError } from './index.ts';
 
 describe('timeout', () => {
   it('returns resolved value if promise execution is less than timeout', async () => {
@@ -26,28 +25,13 @@ describe('timeout', () => {
   });
 
   it('returns with reject error if promise execution is less than timeout', async () => {
-    await assert.rejects(
-      async () =>
-        timeout(
-          new Promise((_, reject) => {
-            reject(new Error('Rejected'));
-          }),
-          { timeout: 5 },
-        ),
-      { message: 'Rejected' },
-    );
+    await assert.rejects(async () => timeout(Promise.reject(new Error('Rejected')), { timeout: 5 }), {
+      message: 'Rejected',
+    });
   });
 
   it('returns resolved value if promise execution resolves immediately', async () => {
-    assert.equal(
-      await timeout(
-        new Promise((resolve) => {
-          resolve('abc');
-        }),
-        { timeout: 5 },
-      ),
-      'abc',
-    );
+    assert.equal(await timeout(Promise.resolve('abc'), { timeout: 5 }), 'abc');
   });
 
   it('rejects with TimeoutError if promise execution exceeds timeout', async () => {
@@ -56,6 +40,7 @@ describe('timeout', () => {
       async () =>
         timeout(
           new Promise(() => {
+            // eslint-disable-next-line sonarjs/no-nested-functions
             setTimeout(() => (reached = true), 10);
           }),
           { timeout: 2 },
@@ -101,11 +86,13 @@ describe('timeout', () => {
       range.map(async (index) =>
         timeout(
           new Promise((resolve) => {
+            // eslint-disable-next-line sonarjs/no-nested-functions
             setImmediate(() => resolve(index));
           }),
         ),
       ),
     );
+    // eslint-disable-next-line sonarjs/no-alphabetical-sort
     assert.deepEqual(results.sort(), range);
   });
 });
