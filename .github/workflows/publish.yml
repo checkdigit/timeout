@@ -44,8 +44,6 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Audit Signatures
         run: npm audit signatures
-      - name: Prepare
-        run: npm run prepare
       - name: Run Test
         if: github.event_name == 'pull_request'
         run: npm run ci:test

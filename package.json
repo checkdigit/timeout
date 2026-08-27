@@ -44,7 +44,6 @@
     "coverage": "node --test-timeout 600000 --experimental-test-coverage --test \"src/**/*.spec.ts\"",
     "lint": "eslint --max-warnings 0 .",
     "lint:fix": "eslint . --fix",
-    "prepare": "",
     "prepublishOnly": "npm run build:dist-types && npm run build:dist-mjs",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
