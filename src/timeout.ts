@@ -1,7 +1,7 @@
 // timeout.ts
 
 /*
- * Copyright (c) 2021-2025 Check Digit, LLC
+ * Copyright (c) 2021-2026 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -30,7 +30,9 @@ export default async function <Type>(
     // Node's built-in setTimeout will default the delay to 1 ms
     // if the delay is larger than 2,147,483,647 ms or less than 1 ms.
     // Instead, we error if the argument is invalid.
-    throw new RangeError(`The timeout must be >= ${MINIMUM_TIMEOUT} and <= ${MAXIMUM_TIMEOUT}`);
+    throw new RangeError(
+      `The timeout must be >= ${MINIMUM_TIMEOUT} and <= ${MAXIMUM_TIMEOUT}`,
+    );
   }
 
   let handle: number | undefined | NodeJS.Timeout;
