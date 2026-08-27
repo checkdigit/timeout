@@ -1,6 +1,6 @@
 # `@checkdigit/timeout`
 
-Copyright (c) 2023–2025 [Check Digit, LLC](https://checkdigit.com)
+Copyright © 2021-2026 [Check Digit, LLC](https://checkdigit.com)
 
 The `@checkdigit/timeout` module implements the recommended Check Digit timeout algorithm for promises.
 
@@ -16,11 +16,10 @@ npm install @checkdigit/timeout
 import timeout from '@checkdigit/timeout';
 
 // await a promise, with the default 60 second timeout
-await timeout(new Promise(....));
+await timeout(new Promise(/* ... */));
 
 // await a promise, but with a 10 second timeout
-await timeout(new Promise(....), { timeout: 10000 });
-
+await timeout(new Promise(/* ... */), { timeout: 10000 });
 ```
 
 ## License
