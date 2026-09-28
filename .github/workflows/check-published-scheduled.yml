@@ -14,7 +14,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Check Published
-        uses: checkdigit/github-actions/check-published@main
+        uses: checkdigit/github-actions/check-published@validate-npm-package__retry-npm-install
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEBUG: '*'

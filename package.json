@@ -1,6 +1,6 @@
 {
   "name": "@checkdigit/timeout",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "Implementation of the Check Digit timeout algorithm for promises",
   "homepage": "https://github.com/checkdigit/timeout#readme",
   "bugs": {
@@ -51,11 +51,15 @@
   },
   "prettier": "@checkdigit/prettier-config",
   "devDependencies": {
-    "@checkdigit/eslint-config": "^12.1.0",
-    "@checkdigit/prettier-config": "^8.1.1",
-    "@checkdigit/typescript-config": "^10.2.1"
+    "@checkdigit/eslint-config": "^12.1.1",
+    "@checkdigit/prettier-config": "^8.3.0",
+    "@checkdigit/typescript-config": "^10.2.2"
   },
   "engines": {
-    "node": ">=24.18.0"
+    "node": ">=24.20.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": false,
+    "unrs-resolver@1.12.2": false
   }
 }
