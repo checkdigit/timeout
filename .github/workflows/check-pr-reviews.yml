@@ -10,6 +10,6 @@ jobs:
     name: Check PR Reviews
     steps:
       - name: Perform Check of PR Reviews
-        uses: checkdigit/github-actions/check-pr-reviews@validate-npm-package__retry-npm-install
+        uses: checkdigit/github-actions/check-pr-reviews@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

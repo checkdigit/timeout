@@ -34,12 +34,12 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Check Label
         if: github.event_name == 'pull_request'
-        uses: checkdigit/github-actions/check-label@validate-npm-package__retry-npm-install
+        uses: checkdigit/github-actions/check-label@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Check Imports
         if: github.event_name == 'pull_request'
-        uses: checkdigit/github-actions/check-imports@validate-npm-package__retry-npm-install
+        uses: checkdigit/github-actions/check-imports@main
       - name: Install Dependencies
         run: npm ci --ignore-scripts
       - name: Audit Signatures
@@ -50,7 +50,7 @@ jobs:
       - name: Prepare Beta
         if: github.event_name == 'pull_request'
         id: prepare-beta
-        uses: checkdigit/github-actions/prepare-beta@validate-npm-package__retry-npm-install
+        uses: checkdigit/github-actions/prepare-beta@main
       - name: Publish Release
         if: github.event_name == 'release'
         run: npm publish
@@ -60,12 +60,12 @@ jobs:
       - name: Validate Published Beta NPM Package
         if: github.event_name == 'pull_request'
         id: validate-npm-package
-        uses: checkdigit/github-actions/validate-npm-package@validate-npm-package__retry-npm-install
+        uses: checkdigit/github-actions/validate-npm-package@main
         with:
           betaPackage: ${{ steps.prepare-beta.outputs.betaPackage }}
       - name: Comment npm publish result
         if: github.event_name == 'pull_request'
-        uses: checkdigit/github-actions/comment-npm-publish@validate-npm-package__retry-npm-install
+        uses: checkdigit/github-actions/comment-npm-publish@main
         with:
           betaPackage: ${{ steps.prepare-beta.outputs.betaPackage }}
         env:

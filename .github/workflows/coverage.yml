@@ -63,7 +63,7 @@ jobs:
       - uses: actions/download-artifact@v8
         with: { name: pr-coverage, path: coverage-pr }
       - name: Post coverage report
-        uses: checkdigit/github-actions/coverage-reporter@validate-npm-package__retry-npm-install
+        uses: checkdigit/github-actions/coverage-reporter@main
         with:
           coverage-results-folder-pr: 'coverage-pr'
           coverage-results-folder-base: 'coverage'
